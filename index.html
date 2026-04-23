@@ -191,13 +191,34 @@ function calc() {
   // =========================
   // ВИТАМИНИ
   // =========================
-  let vitamins =
+ let vitamins = "";
+
+if (age < 18) {
+  vitamins =
+    "Vitamin C: 75 mg<br>" +
+    "Vitamin D: 600 IU<br>" +
+    "Calcium: 1300 mg<br>" +
+    "Magnesium: 300 mg<br>" +
+    "Iron: 11 mg";
+}
+
+else if (age >= 18 && age < 50) {
+  vitamins =
     "Vitamin C: 90 mg<br>" +
     "Vitamin D: 600 IU<br>" +
     "Calcium: 1000 mg<br>" +
     "Magnesium: 350 mg<br>" +
     "Iron: 18 mg";
+}
 
+else {
+  vitamins =
+    "Vitamin C: 100 mg<br>" +
+    "Vitamin D: 800 IU<br>" +
+    "Calcium: 1200 mg<br>" +
+    "Magnesium: 400 mg<br>" +
+    "Iron: 8 mg";
+}
   // =========================
   // OUTPUT
   // =========================
