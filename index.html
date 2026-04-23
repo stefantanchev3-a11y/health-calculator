@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="bg">
 <head>
   <meta charset="UTF-8">
   <title>Здравен калкулатор</title>
@@ -27,12 +27,18 @@
       border-radius: 8px;
       border: none;
       font-size: 15px;
+      width: 80%;
     }
 
     button {
       background: #00c853;
       color: white;
       cursor: pointer;
+    }
+
+    #result {
+      margin-top: 15px;
+      text-align: left;
     }
   </style>
 </head>
@@ -57,40 +63,59 @@
     <option value="35">Висока активност</option>
   </select>
 
-  <br>
-
   <button onclick="calc()">Изчисли</button>
 
-  <p id="result"></p>
+  <div id="result"></div>
 </div>
 
 <script>
 function calc() {
   let w = parseFloat(document.getElementById("weight").value);
-  let h = parseFloat(document.getElementById("height").value) / 100;
+  let h = parseFloat(document.getElementById("height").value);
   let age = parseFloat(document.getElementById("age").value);
   let activity = parseFloat(document.getElementById("activity").value);
 
   if (!w || !h || !age) {
-    document.getElementById("result").innerText = "Въведи всички данни!";
+    document.getElementById("result").innerHTML = "⚠️ Въведи всички данни!";
     return;
   }
 
+  // 🔥 Калории
   let calories = w * activity;
+
+  // 💪 Макроси
   let protein = w * 1.5;
   let fats = (calories * 0.25) / 9;
   let carbs = (calories - (protein * 4 + fats * 9)) / 4;
+
+  // 💧 Вода
   let water = w * 0.033;
 
+  // 🚶 Стъпки
   let steps = activity == 25 ? 5000 : activity == 30 ? 8000 : 12000;
 
+  // 🥦 Витамини
+  let vitamins = `
+    🥦 Vitamin C: 90 mg<br>
+    ☀️ Vitamin D: 600 IU<br>
+    💪 Calcium: 1000 mg<br>
+    ⚡ Iron: 18 mg<br>
+    🧠 Magnesium: 350 mg
+  `;
+
+  // 📊 Резултат
   document.getElementById("result").innerHTML =
     "🔥 Калории: " + calories.toFixed(0) + " kcal<br><br>" +
+
     "💪 Протеин: " + protein.toFixed(0) + " g<br>" +
     "🧈 Мазнини: " + fats.toFixed(0) + " g<br>" +
     "🍞 Въглехидрати: " + carbs.toFixed(0) + " g<br><br>" +
+
     "💧 Вода: " + water.toFixed(2) + " L<br>" +
-    "🚶 Стъпки: ~" + steps + " / ден";
+    "🚶 Стъпки: ~" + steps + " / ден<br><br>" +
+
+    "🥦 Витамини:<br>" +
+    vitamins;
 }
 </script>
 
