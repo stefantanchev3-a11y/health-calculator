@@ -229,8 +229,11 @@ else {
     "🍞 Въглехидрати: " + carbs.toFixed(0) + " g<br><br>" +
     "💧 Вода: " + water.toFixed(2) + " L<br>" +
     "🚶 Стъпки: ~" + steps + "<br><br>" +
-    "🎯 Цел: " + goal + "<br>" +
-    "⏳ Време: ~ " + daysMin + " – " + daysMax + " дни<br><br>" +
+(goal === "maintain"
+  ? ""
+  : "🎯 Цел: " + goal + "<br>" +
+    "⏳ Време: ~ " + daysMin + " – " + daysMax + " дни<br><br>"
+) +
     "🥦 Витамини:<br>" + vitamins;
 }
 
